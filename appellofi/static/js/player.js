@@ -29,10 +29,10 @@ function fetchTracks(offset, total_limit) {
     offset = offset || 0;
     total_limit = total_limit || 100;
 
-    console.log("fetcing...");
+    log("fetcing...");
     getLikeTrack(offset).then(function (tracks) {
         _tracks.push.apply(_tracks, tracks);
-        console.log("getLikes " + _tracks.length);
+        log("getLikes " + _tracks.length);
         if (_tracks.length > total_limit || tracks.length < 1) {
             next();
             return;
@@ -46,12 +46,12 @@ function fetchTracks(offset, total_limit) {
 function next() {
     close();
 
-    console.log("tracks" + _tracks);
+    log("tracks" + _tracks);
     shuffle(_tracks);
     var track = _tracks[0];
 
-    console.log("track" + track.id);
-    console.log("track" + track.title);
+    log("track" + track.id);
+    log("track" + track.title);
 
     currentStream = SC.stream("/tracks/" + track.id).then(function (player) {
         setUserText(track.user.permalink);
@@ -72,6 +72,10 @@ function setTitle(title) {
     $(".title").text(title);
 }
 
+
+function log(str) {
+    $(".debug").append("<div>" + str + "</div>");
+}
 
 fetchTracks();
 
