@@ -25,27 +25,26 @@ function shuffle(array) {
 }
 
 
-function fetchTracks(offset, total_limit) {
+function fetchTracks(offset) {
     offset = offset || 0;
-    total_limit = total_limit || 100;
 
     log("fetcing...");
     getLikeTrack(offset).then(function (tracks) {
-        _tracks.push.apply(_tracks, tracks);
+        tracks.forEach(function (value, idx, array) {
+            _tracks.push(value);
+        });
         log("getLikes " + _tracks.length);
-        if (_tracks.length > total_limit || tracks.length < 1) {
+        if (tracks.length < 1) {
             next();
             return;
         }
-        offset = offset + tracks.length;
 
+        offset += tracks.length;
         fetchTracks(offset);
     });
 }
 
 function next() {
-    close();
-
     log("tracks" + _tracks);
     shuffle(_tracks);
     var track = _tracks[0];
@@ -53,7 +52,12 @@ function next() {
     log("track" + track.id);
     log("track" + track.title);
 
-    currentStream = SC.stream("/tracks/" + track.id).then(function (player) {
+    currentStream = SC.stream("/tracks/" + track.id).catch(function (err) {
+        log("err : " + err.message);
+        setTimeout(function () {
+            next();
+        }, 1000);
+    }).then(function (player) {
         setUserText(track.user.permalink);
         setTitle(track.title);
         player.play();
@@ -72,7 +76,6 @@ function setTitle(title) {
     $(".title").text(title);
 }
 
-
 function log(str) {
     $(".debug").append("<div>" + str + "</div>");
 }
@@ -81,20 +84,4 @@ fetchTracks();
 
 setTimeout(function () {
     location = ''
-}, 3600 * 12);
-
-window.onerror = function (msg, url, line, col, error) {
-    // Note that col & error are new to the HTML 5 spec and may not be
-    // supported in every browser.  It worked for me in Chrome.
-    var extra = !col ? '' : '\ncolumn: ' + col;
-    extra += !error ? '' : '\nerror: ' + error;
-
-    // You can view the information in an alert to see things working like this:
-    log("Error: " + msg + "\nurl: " + url + "\nline: " + line + extra);
-
-    // TODO: Report this error via ajax so you can keep track
-    //       of what pages have JS issues
-
-    var suppressErrorAlert = true;
-    return suppressErrorAlert;
-};
+}, 1000 * 3600 * 12);
