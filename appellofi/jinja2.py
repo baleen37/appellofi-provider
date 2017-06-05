@@ -10,7 +10,7 @@ from jinja2 import Environment
 def environment(**options):
     def static_cache_query(url):
 
-        out = subprocess.Popen(['git', 'rev-parse', '--short', 'HEAD'], stdout=subprocess.PIPE).communicate()[0]
+        out = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'])
 
         try:
             git_hash = out.strip().decode('ascii')
