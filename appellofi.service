@@ -1,0 +1,11 @@
+[Unit]
+Description=uWSGI instance to serve myproject
+After=network.target
+
+[Service]
+WorkingDirectory=/home/ubuntu/appellofi-provider
+Environment="PATH=/home/ubuntu/appellofi-provider/.venv/bin"
+ExecStart=/home/ubuntu/appellofi-provider/.venv/bin/python manage.py runserver 0.0.0.0:8000
+
+[Install]
+WantedBy=multi-user.target
