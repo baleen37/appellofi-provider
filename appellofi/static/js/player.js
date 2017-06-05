@@ -74,3 +74,7 @@ function setTitle(title) {
 
 
 fetchTracks();
+
+setTimeout(function () {
+    location = ''
+}, 3600 * 12);
