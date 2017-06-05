@@ -16,7 +16,6 @@ js_files = [
 ]
 
 for js in js_files:
-    print("hi")
     bundle = Bundle('appellofi/static/js/{}.js'.format(js),
                     filters='uglifyjs',
                     output='appellofi/static/gen/{}.min.js'.format(js))
