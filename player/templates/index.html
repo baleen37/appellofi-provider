@@ -1,12 +1,23 @@
 {% extends '_base.html' %}
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ static('gen/common.min.css') }}">
+{% endblock %}
 
 {% block body %}
-    <div>
+    <div class="player">
+        <div class="title-box">
+            <div class="user-text">user</div>
+            <div class="title">appellofi</div>
+        </div>
+        <img src="{{ static('img/MUHXmxK.gif') }}"/>
     </div>
 {% endblock %}
 
 {% block js %}
     {{ super() }}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
     <script src="{{ static('gen/player.min.js') }}"></script>
 {% endblock %}
 

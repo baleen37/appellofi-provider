@@ -1,6 +1,7 @@
 from django_assets import Bundle, register
 
 lesses = [
+    'common'
 ]
 
 for less in lesses:
