@@ -25,7 +25,8 @@ SECRET_KEY = '080pr$agxn=z%#^^nms#6xrgn2y=q(z6iuqxq0=t**#_=!4+2='
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'appellofi.baleen.me'
+    'appellofi.baleen.me',
+    'localhost'
 ]
 
 # Application definition
