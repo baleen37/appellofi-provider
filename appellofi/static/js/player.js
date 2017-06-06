@@ -84,4 +84,4 @@ fetchTracks();
 
 setTimeout(function () {
     location = ''
-}, 1000 * 3600 * 12);
+}, 1000 * 3600);
