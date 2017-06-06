@@ -80,6 +80,7 @@ function log(str) {
     $(".debug").append("<div>" + str + "</div>");
 }
 
+log("first start");
 fetchTracks();
 
 setTimeout(function () {
