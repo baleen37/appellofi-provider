@@ -35,7 +35,7 @@ var fetchTracks = function (offset, callback) {
 
 var nextTrack = function () {
     currentTrackIdx += 1;
-    if (_tracks.length >= currentTrackIdx)
+    if (_tracks.length <= currentTrackIdx)
         currentTrackIdx = 0;
 
     return _tracks[currentTrackIdx];

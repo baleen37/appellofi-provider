@@ -1,0 +1,7 @@
+{
+    "dev": {
+        "app_function": "appellofi.app.app",
+        "s3_bucket": "appellofi.lambda",
+        "runtime": "python3.6",
+    }
+}

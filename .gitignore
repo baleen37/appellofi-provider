@@ -111,3 +111,5 @@ ENV/
 
 appellofi/static/gen
 
+
+appellofi-provi-dev-template-*.json
