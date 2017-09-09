@@ -1,7 +1,15 @@
 {
-    "dev": {
-        "app_function": "appellofi.app.app",
-        "s3_bucket": "appellofi.lambda",
-        "runtime": "python3.6",
-    }
+  "dev": {
+    "project_name": "appellofi_app",
+    "app_function": "manage.app",
+    "s3_bucket": "appellofi.lambda",
+    "debug": true,
+    "log_level": "DEBUG"
+  },
+  "product": {
+    "project_name": "appellofi_app",
+    "app_function": "manage.app",
+    "s3_bucket": "appellofi.lambda"
+  }
 }
+
