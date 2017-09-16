@@ -77,3 +77,7 @@ fetchTracks(0, function (tracks) {
 
     play(track);
 });
+
+setTimeout(function(){
+  window.location.reload(true);
+}, 24 * 60 * 60 * 1000)
